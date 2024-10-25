@@ -4,6 +4,7 @@ import { FiLock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom'; // Import useHistory for redirection
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const getRandomPosition = (max) => {
   return Math.floor(Math.random() * max);
@@ -47,7 +48,8 @@ const Signup = () => {
       });
       setSuccess('Account created successfully! Redirecting to sign in...');
       const userData = response.data; 
-
+      const token = response.data.token;
+      Cookies.set('token', token);
       // Save user data to localStorage
       localStorage.setItem('user', JSON.stringify(userData));
 

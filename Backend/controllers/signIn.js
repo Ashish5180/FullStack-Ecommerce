@@ -44,7 +44,8 @@ const signIn = async (req, res) => {
         user: {
             id: user._id,
             email: user.email,
-            name: user.username, // Include any other user fields you want to send
+            name: user.username,
+            token: token // Include any other user fields you want to send
             // Add other fields as necessary
         },
     });

@@ -30,7 +30,7 @@ app.post("/signin",signIn);
 
 
 // Logout route to clear the JWT token cookie
-app.post("https://full-stack-ecommerce-gold.vercel.app/logout", (req, res) => {
+app.post("/logout", (req, res) => {
     res.clearCookie("token");
     res.json({ message: "Logged out successfully" });
 });

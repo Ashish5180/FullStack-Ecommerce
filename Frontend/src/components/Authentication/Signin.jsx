@@ -4,6 +4,8 @@ import { FiLock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios for making HTTP requests
+import Cookies from 'js-cookie';
+
 
 const getRandomPosition = (max) => {
   return Math.floor(Math.random() * max);
@@ -44,7 +46,8 @@ const Signin = () => {
     
       });
       const userData = response.data; 
-
+      const token = response.data.token;
+      Cookies.set('token', token);
     // Save user data to localStorage
     localStorage.setItem('user', JSON.stringify(userData)); 
 
