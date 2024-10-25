@@ -8,7 +8,7 @@ import cors from 'cors'; // Import the cors package
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin: "*",
+    origin: "https://full-stack-ecommerce-gold.vercel.app",
     credentials: true, // Allows cookies to be sent with requests
 }));
 
