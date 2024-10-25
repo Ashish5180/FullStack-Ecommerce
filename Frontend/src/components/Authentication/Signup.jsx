@@ -48,7 +48,7 @@ const Signup = () => {
       });
       setSuccess('Account created successfully! Redirecting to sign in...');
       const userData = response.data; 
-      const token = JSON.stringify(userData.token);
+      const token = userData.user.token;
 
       Cookies.set('token', token);
       // Save user data to localStorage

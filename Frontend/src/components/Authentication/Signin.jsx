@@ -46,7 +46,7 @@ const Signin = () => {
     
       });
       const userData = response.data; 
-      const token = JSON.stringify(userData.token);
+      const token = userData.user.token;
       Cookies.set('token', token);
     // Save user data to localStorage
     localStorage.setItem('user', JSON.stringify(userData)); 
