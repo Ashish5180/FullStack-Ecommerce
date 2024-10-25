@@ -1,12 +1,12 @@
 import express from "express";
-import cookieParser from 'cookie-parser';
 import signIn from "./controllers/signIn.js";
 import signUp from "./controllers/signUp.js";
-
+import cookieParser from 'cookie-parser';
 import cors from 'cors'; // Import the cors package
 
 
 const app = express();
+app.use(cookieParser());
 app.use(cors({
     origin: 'https://full-stack-ecommerce-gold.vercel.app',
     credentials: true, // Allows cookies to be sent with requests
@@ -15,7 +15,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 
 app.get("/", (req, res) => {
