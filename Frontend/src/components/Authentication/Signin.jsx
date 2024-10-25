@@ -36,7 +36,7 @@ const Signin = () => {
 
     try {
       const response = await axios.post('http://localhost:8000/signIn', formData, {
-        withCredentials: true, // Include credentials in the request
+        withCredentials: true,
       });
       const userData = response.data; 
 

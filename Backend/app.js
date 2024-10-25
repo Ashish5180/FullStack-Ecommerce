@@ -7,13 +7,11 @@ import cors from 'cors'; // Import the cors package
 
 
 const app = express();
-const corsOptions = {
-    origin: "http://localhost:5173", // Replace with your frontend URL
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-};
+app.use(cors({
+    origin: 'https://full-stack-ecommerce-gold.vercel.app',
+    credentials: true, // Allows cookies to be sent with requests
+}));
 
-// Use CORS middleware
-app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -38,7 +38,10 @@ const Signup = () => {
 
     try {
       const response = await axios.post('http://localhost:8000/signUp', formData, {
-        withCredentials: true, // Include credentials in the request
+        withCredentials: true, 
+        headers: {
+        'Content-Type': 'application/json'
+    },
       });
       setSuccess('Account created successfully! Redirecting to sign in...');
       const userData = response.data; 
