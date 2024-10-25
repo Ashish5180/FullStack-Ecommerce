@@ -28,6 +28,7 @@ const signIn = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET);
 
+
     // Send JWT token in a secure HTTP-only cookie
     res.cookie("token", token, {
         httpOnly: true,      // Ensures the cookie is not accessible via JavaScript

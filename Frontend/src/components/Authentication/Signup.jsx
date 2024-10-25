@@ -37,7 +37,7 @@ const Signup = () => {
     setSuccess(''); // Reset success
 
     try {
-      const response = await axios.post('http://localhost:8000/signUp', formData, {
+      const response = await axios.post('https://fullstack-ecommerce-ri7c.onrender.com/signUp', formData, {
         withCredentials: true, 
         headers: {
         'Content-Type': 'application/json'

@@ -4,6 +4,7 @@ import userModal from "../models/userModal.js";
 const JWT_SECRET = "clothing-store"; // Replace with a strong secret key
 const SALT_ROUNDS = 10; // Number of salt rounds for bcrypt
 
+
 const signUp = async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -30,11 +31,9 @@ const signUp = async (req, res) => {
     res.cookie("token", token, {
         httpOnly: true,      // Ensures the cookie is not accessible via JavaScript
         secure: true,        // Sends the cookie only over HTTPS
-        sameSite: 'None',  
+        sameSite: 'None',
     });
     
-    
-
     res.json({
         message: "Sign Up successfully",
         user: {
