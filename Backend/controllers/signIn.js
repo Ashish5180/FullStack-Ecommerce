@@ -34,6 +34,8 @@ const signIn = async (req, res) => {
         httpOnly: true,      // Ensures the cookie is not accessible via JavaScript
         secure: true,        // Sends the cookie only over HTTPS
         sameSite: 'None', 
+        domain: 'https://full-stack-ecommerce-gold.vercel.app', // Set this to your frontend domain
+        path: '/',
     });
     
     
