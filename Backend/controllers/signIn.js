@@ -32,8 +32,7 @@ const signIn = async (req, res) => {
     // Send JWT token in a secure HTTP-only cookie
     res.cookie("token", token, {
         httpOnly: true,      // Ensures the cookie is not accessible via JavaScript
-        secure: true,        // Sends the cookie only over HTTPS
-        sameSite: 'None', 
+  
        
     });
     

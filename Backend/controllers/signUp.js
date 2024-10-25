@@ -30,8 +30,6 @@ const signUp = async (req, res) => {
     // Send JWT token in a secure HTTP-only cookie
     res.cookie("token", token, {
         httpOnly: true,      // Ensures the cookie is not accessible via JavaScript
-        secure: true,        // Sends the cookie only over HTTPS
-        sameSite: 'None',
     });
     
     res.json({
@@ -39,7 +37,8 @@ const signUp = async (req, res) => {
         user: {
             id: user._id,
             email: user.email,
-            name: user.username, // Include any other user fields you want to send
+            name: user.username,
+            token:token // Include any other user fields you want to send
             // Add other fields as necessary
         },
     });

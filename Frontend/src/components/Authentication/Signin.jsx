@@ -36,7 +36,12 @@ const Signin = () => {
 
     try {
       const response = await axios.post('https://fullstack-ecommerce-ri7c.onrender.com/signIn', formData, {
-        withCredentials: true,
+        withCredentials: true, 
+        headers: {
+        'Content-Type': 'application/json',
+        body: JSON.stringify(formData),
+    },
+    
       });
       const userData = response.data; 
 

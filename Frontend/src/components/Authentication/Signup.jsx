@@ -40,8 +40,10 @@ const Signup = () => {
       const response = await axios.post('https://fullstack-ecommerce-ri7c.onrender.com/signUp', formData, {
         withCredentials: true, 
         headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        body: JSON.stringify(formData),
     },
+    
       });
       setSuccess('Account created successfully! Redirecting to sign in...');
       const userData = response.data; 
