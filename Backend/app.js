@@ -8,7 +8,7 @@ import cors from 'cors'; // Import the cors package
 const app = express();
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://full-stack-ecommerce-gold.vercel.app',
+    origin: "*",
     credentials: true, // Allows cookies to be sent with requests
 }));
 
@@ -29,11 +29,8 @@ app.post("/signin",signIn);
 
 
 
-
-
-
 // Logout route to clear the JWT token cookie
-app.post("/logout", (req, res) => {
+app.post("https://full-stack-ecommerce-gold.vercel.app/logout", (req, res) => {
     res.clearCookie("token");
     res.json({ message: "Logged out successfully" });
 });
