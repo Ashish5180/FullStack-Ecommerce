@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { FiLock } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const TARGET_TEXT = "Logout Account";
 const CYCLES_PER_LETTER = 2;
@@ -57,46 +58,24 @@ const EncryptButton = () => {
     }
 
     try {
-      const result = await logoutUser(); // Call your logout API here
-      console.log("Logout result:", result); // Log the result of the logout
-
-      // Clear the token cookie
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Adjust 'token' to match your cookie name
+      // Clear the token cookie using js-cookie
+      Cookies.remove('token', { path: '/' });
 
       // Clear user data from local storage
-      localStorage.removeItem('user'); // Adjust 'user' to match your local storage key
+      localStorage.removeItem('user');
 
       // Redirect to the login page
-      navigate("/"); // Redirect after logout
+      navigate("/");
 
     } catch (error) {
-      console.error("Logout failed:", error); // Log the error
+      console.error("Logout failed:", error);
     }
-  };
-
-  const logoutUser = async () => {
-    const response = await fetch('http://localhost:8000/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}), // Adjust payload if necessary
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Logout API error:', errorText);
-      throw new Error('Failed to log out');
-    }
-
-    return await response.json(); // Return the response data
   };
 
   useEffect(() => {
-    // Cleanup on component unmount
     return () => clearInterval(intervalRef.current);
   }, []);
-
+  
   return (
     <motion.button
       whileHover={{ scale: 1.025 }}

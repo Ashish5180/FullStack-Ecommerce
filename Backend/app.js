@@ -29,11 +29,7 @@ app.post("/signin",signIn);
 
 
 
-// Logout route to clear the JWT token cookie
-app.post("/logout", (req, res) => {
-    res.clearCookie("token");
-    res.json({ message: "Logged out successfully" });
-});
+
 
 // Server
 app.listen(8000, () => console.log(`Server is running on port 8000`));
